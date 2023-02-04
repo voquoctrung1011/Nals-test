@@ -8,7 +8,7 @@ const routes = [
   ...Utils.generateRoutesFromConfigs(routeConfigs),
   {
     path: "/",
-    component: () => <Navigate to={{ pathname: "/setting" }} />,
+    component: () => <Navigate to={{ pathname: "/blog" }} />,
     auth: ["guest", "user"],
   },
 ];

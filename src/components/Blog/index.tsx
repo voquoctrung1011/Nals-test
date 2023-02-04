@@ -34,25 +34,25 @@ const Blog = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [amoutOfBlogs, setAmountOfBlogs] = useState(1);
 
-  const params: IParam =
-    search &&
-    JSON.parse(
-      '{"' +
-        decodeURI(search || "?page=1&limit=10&search=&sortBy=title&order=asc")
-          .replace("?", "")
-          .replace(/"/g, '\\"')
-          .replace(/&/g, '","')
-          .replace(/=/g, '":"') +
-        '"}'
-    );
+  const params: IParam = search
+    ? JSON.parse(
+        '{"' +
+          decodeURI(search)
+            .replace("?", "")
+            .replace(/"/g, '\\"')
+            .replace(/&/g, '","')
+            .replace(/=/g, '":"') +
+          '"}'
+      )
+    : {};
   const [searchValue, setSearchValue] = useState(params?.search || "");
   const [sortValue, setSortValue] = useState(params?.order || SORT_TYPE.DESC);
 
   const dataSubmit: IParam = {
     page: params?.page || 1,
     limit: params?.limit || PAGE_LIMIT,
-    search: searchValue,
     sortBy: params?.sortBy || SORT_BY_TYPE.TITLE,
+    search: searchValue,
     order: sortValue,
   };
 
@@ -71,7 +71,7 @@ const Blog = () => {
     if (data) {
       const query = "?" + new URLSearchParams(values).toString();
       navigate({
-        pathname: "/",
+        pathname: "/blog",
         search: query,
       });
       dispatch(setBlog(data));

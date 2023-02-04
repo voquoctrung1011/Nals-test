@@ -9,7 +9,7 @@ import { IRoute } from "../interfaces";
 
 const { Content } = Layout;
 const App = () => {
-  const [currentRoutes, setCurrentRoutes] = useState<any>([]);
+  const [currentRoutes, setCurrentRoutes] = useState<IRoute[]>([]);
   const accessToken = getLocalStorage("access_token");
 
   useEffect(() => {

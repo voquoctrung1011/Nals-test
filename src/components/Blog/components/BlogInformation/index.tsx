@@ -1,5 +1,6 @@
 import React from "react";
-import { Avatar, List, Skeleton } from "antd";
+import { Avatar, List, Skeleton, Typography } from "antd";
+
 import { IBlogType } from "../../../../interfaces";
 
 export type IBlogInformationPage = {
@@ -39,8 +40,19 @@ const BlogÌnormation = ({
           <Skeleton avatar title={false} loading={isLoading} active>
             <List.Item.Meta
               avatar={<Avatar src={item?.image} />}
-              title={<a href="">{item.title}</a>}
-              description={item?.content}
+              title={
+                <Typography.Paragraph
+                  ellipsis={{ rows: 1 }}
+                  style={{ margin: 0 }}
+                >
+                  <a href={`/blog/${item?.id}`}>{item.title}</a>
+                </Typography.Paragraph>
+              }
+              description={
+                <Typography.Paragraph ellipsis={{ rows: 2 }}>
+                  {item?.content}
+                </Typography.Paragraph>
+              }
             />
           </Skeleton>
         </List.Item>

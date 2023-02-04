@@ -1,11 +1,20 @@
 const navigationConfig = [
   {
-    id: "dashboard",
-    title: "Dashboard",
-    translate: "Dashboard",
+    id: "blog",
+    title: "Blog",
+    translate: "Blog",
     type: "item",
-    icon: "dashboard",
-    url: "/",
+    icon: "blog",
+    url: "/blog",
+    auth: ["guest", "user"],
+  },
+  {
+    id: "blog-detail",
+    title: "Blog Detail",
+    translate: "Blog Detail",
+    type: "item",
+    icon: "blog",
+    url: "/blog",
     auth: ["guest", "user"],
   },
 ];

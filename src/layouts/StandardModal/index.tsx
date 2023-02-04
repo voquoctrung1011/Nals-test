@@ -21,8 +21,8 @@ import { UploadOutlined } from "@ant-design/icons";
 import { IBlogType } from "../../interfaces";
 
 export type IBStandardModalLayout = {
-  params: any;
-  fetchData: (values: IBlogType) => void;
+  params?: any;
+  fetchData?: any;
 };
 
 const StandardModalLayout = ({ fetchData, params }: IBStandardModalLayout) => {

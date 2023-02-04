@@ -1,6 +1,8 @@
-import { REACT_APP_BACK_URL } from "../../constants";
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+
+import { ENDPOINT } from "./../../constants/endpoint.constant";
+import { REACT_APP_BACK_URL } from "../../constants";
 import { IBlogType, IParam } from "../../interfaces";
 
 //state
@@ -34,11 +36,10 @@ export default slice.reducer;
 //action
 export const { setBlog, setDetailBlog, setModal } = slice.actions;
 
-//ASSET
 export const FETCH_ALL_BLOG = async (data: IParam) => {
   try {
     return await axios
-      .get(`${REACT_APP_BACK_URL}/blogs`, {
+      .get(`${REACT_APP_BACK_URL}${ENDPOINT.BLOG}`, {
         params: data,
       })
       .then((res) => {
@@ -49,20 +50,22 @@ export const FETCH_ALL_BLOG = async (data: IParam) => {
   }
 };
 
-export const CREATING_BLOG = async (data: IBlogType) => {
+export const FETCH_DETAIL_BLOG = async (id: string | undefined) => {
   try {
-    return await axios.post(`${REACT_APP_BACK_URL}/blogs`, data).then((res) => {
-      return res.data;
-    });
-  } catch (err: any) {
-    throw err.response;
+    return await axios
+      .get(`${REACT_APP_BACK_URL}${ENDPOINT.BLOG}/${id}`)
+      .then((res) => {
+        return res.data;
+      });
+  } catch (err) {
+    throw err;
   }
 };
 
-export const UPDATING_BLOG = async (id: string, data: IBlogType) => {
+export const CREATING_BLOG = async (data: IBlogType) => {
   try {
     return await axios
-      .put(`${REACT_APP_BACK_URL}/blogs/${id}`, data)
+      .post(`${REACT_APP_BACK_URL}${ENDPOINT.BLOG}`, data)
       .then((res) => {
         return res.data;
       });
@@ -71,10 +74,22 @@ export const UPDATING_BLOG = async (id: string, data: IBlogType) => {
   }
 };
 
-export const DELETING_BLOG = async (id: string) => {
+export const UPDATING_BLOG = async (id: string, data: IBlogType) => {
   try {
     return await axios
-      .delete(`${REACT_APP_BACK_URL}/blogs/${id}`)
+      .put(`${REACT_APP_BACK_URL}${ENDPOINT.BLOG}/${id}`, data)
+      .then((res) => {
+        return res.data;
+      });
+  } catch (err: any) {
+    throw err.response;
+  }
+};
+
+export const DELETING_BLOG = async (id: string | undefined) => {
+  try {
+    return await axios
+      .delete(`${REACT_APP_BACK_URL}${ENDPOINT.BLOG}/${id}`)
       .then((res) => {
         return res.status;
       });

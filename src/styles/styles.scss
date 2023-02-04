@@ -187,7 +187,16 @@ body {
   }
 }
 
+.ant-btn {
+  border-radius: 5px;
+}
+
 .ant-pagination {
   text-align: center;
   margin: 20px 0px 10px 0px;
+}
+
+.ant-list-item-meta-description,
+.ant-list-item-meta-title {
+  word-break: break-word;
 }
