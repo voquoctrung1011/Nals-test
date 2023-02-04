@@ -99,10 +99,10 @@ const BlogDetail = () => {
         <div className="site-layout-content">
           {!initialLoading ? (
             <Row gutter={[32, 32]}>
-              <Col xs={24} sm={12} md={12} lg={12} xl={12}>
-                <Image src={detailBlog?.image} />
+              <Col sm={24} xl={12} className="detail-blog">
+                <Image preview={false} src={detailBlog?.image} width="100%" />
               </Col>
-              <Col xs={24} sm={12} md={12} lg={12} xl={12}>
+              <Col sm={24} xl={12}>
                 <Typography.Title level={1} style={{ color: "#1677ff" }}>
                   {detailBlog?.title}
                 </Typography.Title>

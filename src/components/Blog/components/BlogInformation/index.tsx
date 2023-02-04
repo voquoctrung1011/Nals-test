@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, List, Skeleton, Typography } from "antd";
+import { Image, List, Skeleton, Typography } from "antd";
 
 import { IBlogType } from "../../../../interfaces";
 
@@ -39,7 +39,15 @@ const BlogÌnormation = ({
         >
           <Skeleton avatar title={false} loading={isLoading} active>
             <List.Item.Meta
-              avatar={<Avatar src={item?.image} />}
+              avatar={
+                <Image
+                  preview={false}
+                  src={item?.image}
+                  width={100}
+                  height={80}
+                  alt={item?.title}
+                />
+              }
               title={
                 <Typography.Paragraph
                   ellipsis={{ rows: 1 }}

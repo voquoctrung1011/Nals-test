@@ -190,7 +190,9 @@ const StandardModalLayout = ({ fetchData, params }: IBStandardModalLayout) => {
                   }}
                 >
                   <Image
+                    preview={false}
                     src={l.url}
+                    alt="image"
                     style={{
                       maxWidth: "200px",
                       maxHeight: "200px",

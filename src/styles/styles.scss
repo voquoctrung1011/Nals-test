@@ -7,10 +7,12 @@ body {
 
 .site-layout-content,
 .ant-card {
-  min-height: calc(100vh - 200px);
   padding: 20px;
   background: #fff;
   border-radius: 8px;
+  max-width: 1440px;
+  margin: auto;
+  height: max-content;
   .ant-page-header-heading-extra {
     display: flex;
   }
@@ -199,4 +201,14 @@ body {
 .ant-list-item-meta-description,
 .ant-list-item-meta-title {
   word-break: break-word;
+}
+
+.detail-blog {
+  .ant-image {
+    width: 100%;
+  }
+}
+
+.ant-image-img {
+  border-radius: 8px;
 }

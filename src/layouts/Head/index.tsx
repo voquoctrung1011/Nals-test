@@ -7,7 +7,7 @@ const { Header } = Layout;
 const Head = () => {
   const navigate = useNavigate();
 
-  const onToogleRoute = (e: { key: any }) => {
+  const onToogleRoute = (e: { key: string }) => {
     navigate(e.key);
   };
   return (
