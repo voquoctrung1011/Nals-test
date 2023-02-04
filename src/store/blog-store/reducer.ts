@@ -1,6 +1,7 @@
 import { REACT_APP_BACK_URL } from "../../constants";
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { IBlogType, IParam } from "../../interfaces";
 
 //state
 const slice = createSlice({
@@ -34,7 +35,7 @@ export default slice.reducer;
 export const { setBlog, setDetailBlog, setModal } = slice.actions;
 
 //ASSET
-export const FETCH_ALL_BLOG = async (data: any) => {
+export const FETCH_ALL_BLOG = async (data: IParam) => {
   try {
     return await axios
       .get(`${REACT_APP_BACK_URL}/blogs`, {
@@ -48,7 +49,7 @@ export const FETCH_ALL_BLOG = async (data: any) => {
   }
 };
 
-export const CREATING_BLOG = async (data: any) => {
+export const CREATING_BLOG = async (data: IBlogType) => {
   try {
     return await axios.post(`${REACT_APP_BACK_URL}/blogs`, data).then((res) => {
       return res.data;
@@ -58,7 +59,7 @@ export const CREATING_BLOG = async (data: any) => {
   }
 };
 
-export const UPDATING_BLOG = async (id: string, data: any) => {
+export const UPDATING_BLOG = async (id: string, data: IBlogType) => {
   try {
     return await axios
       .put(`${REACT_APP_BACK_URL}/blogs/${id}`, data)

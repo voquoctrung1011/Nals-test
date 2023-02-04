@@ -22,6 +22,7 @@ import Head from "../../layouts/Head";
 import Footer from "../../layouts/Footer";
 import ExtraActionBlog from "./components/ExtraActionBlog";
 import BlogInformation from "./components/BlogInformation";
+import { IBlogType, IParam } from "../../interfaces";
 
 const { Content } = Layout;
 
@@ -33,7 +34,7 @@ const Blog = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [amoutOfBlogs, setAmountOfBlogs] = useState(1);
 
-  const params: any =
+  const params: IParam =
     search &&
     JSON.parse(
       '{"' +
@@ -47,7 +48,7 @@ const Blog = () => {
   const [searchValue, setSearchValue] = useState(params?.search || "");
   const [sortValue, setSortValue] = useState(params?.order || SORT_TYPE.DESC);
 
-  const dataSubmit = {
+  const dataSubmit: IParam = {
     page: params?.page || 1,
     limit: params?.limit || PAGE_LIMIT,
     search: searchValue,
@@ -83,7 +84,7 @@ const Blog = () => {
     fetchBlogByPage(dataSubmit);
   }, []);
 
-  const handleEditBlog = (data: any) => {
+  const handleEditBlog = (data: IBlogType) => {
     dispatch(
       setModal({
         data: data,
@@ -93,7 +94,7 @@ const Blog = () => {
     );
   };
 
-  const showDeleteConfirm = (data: any) => {
+  const showDeleteConfirm = (data: IBlogType) => {
     Modal.confirm({
       title: "Are you sure delete this blog?",
       icon: <ExclamationCircleFilled />,
@@ -109,7 +110,7 @@ const Blog = () => {
     });
   };
 
-  const handleDeleteBlog = (data: any) => {
+  const handleDeleteBlog = (data: IBlogType) => {
     setIsLoading(true);
     DELETING_BLOG(data?.id).then((res) => {
       if (res === 200) {
@@ -119,7 +120,7 @@ const Blog = () => {
     });
   };
 
-  const handleChangeValue = (e: any) => {
+  const handleChangeValue = (e: { target: { value: string } }) => {
     const value = e.target.value;
     setSearchValue(value);
   };

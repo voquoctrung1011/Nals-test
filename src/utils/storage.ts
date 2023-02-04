@@ -2,11 +2,11 @@ export const KEY_LOCAL_STORAGE = {
   ACCESS_TOKEN: "access_token",
 };
 
-export const saveLocalStorage = (name?: any, payload?: any) => {
+export const saveLocalStorage = (name: string, payload: string) => {
   localStorage.setItem(name, payload);
 };
 
-export const getLocalStorage = (key: any) => {
+export const getLocalStorage = (key: string) => {
   if (typeof window !== "undefined") {
     try {
       JSON.parse(localStorage.getItem(key) || "null");
@@ -17,11 +17,11 @@ export const getLocalStorage = (key: any) => {
   }
 };
 
-export const removeLocalStorage = (name: any) => {
+export const removeLocalStorage = (name: string) => {
   localStorage.removeItem(name);
 };
 
-export const deleteItem = (key: any) => {
+export const deleteItem = (key: string) => {
   if (typeof window !== "undefined") {
     if (Array.isArray(key)) {
       key.forEach((item) => localStorage.removeItem(item));

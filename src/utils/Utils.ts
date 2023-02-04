@@ -7,7 +7,10 @@ class EventEmitter {
 }
 
 class FuseUtils {
-  static setRoutes(config?: any, defaultAuth?: any) {
+  static setRoutes(
+    config: { routes: any; auth: null; settings: any },
+    defaultAuth: any
+  ) {
     let routes = [...config.routes];
 
     routes = routes.map((route) => {

@@ -18,15 +18,21 @@ import {
 } from "../../store/blog-store/reducer";
 import { MODAL_TYPE } from "../../constants";
 import { UploadOutlined } from "@ant-design/icons";
+import { IBlogType } from "../../interfaces";
 
-const StandardModalLayout = ({ fetchData, params }: any) => {
+export type IBStandardModalLayout = {
+  params: any;
+  fetchData: (values: IBlogType) => void;
+};
+
+const StandardModalLayout = ({ fetchData, params }: IBStandardModalLayout) => {
   const dispatch = useDispatch();
   const [form] = Form.useForm();
   const { modalVisible } = useSelector(({ blog }: any) => blog.blogReducer);
   const [fileList, setFileList] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const onFinish = (values: any) => {
+  const onFinish = (values: IBlogType) => {
     try {
       setIsLoading(true);
       const type = modalVisible?.type;
@@ -90,7 +96,7 @@ const StandardModalLayout = ({ fetchData, params }: any) => {
     className: "upload-list-inline",
     listType: "picture",
     showUploadList: false,
-    beforeUpload: (file: any) => {
+    beforeUpload: (file) => {
       const reader = new FileReader();
       reader.readAsArrayBuffer(file);
       reader.onload = () => {
@@ -175,7 +181,7 @@ const StandardModalLayout = ({ fetchData, params }: any) => {
           </Upload>
           <div>
             {fileList.length > 0 ? (
-              fileList.map((l: any, index: number) => (
+              fileList.map((l: { url: string | undefined }, index: number) => (
                 <div
                   key={index}
                   style={{

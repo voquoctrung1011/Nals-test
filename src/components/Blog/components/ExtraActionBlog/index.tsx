@@ -3,6 +3,15 @@ import { Select, Input, Button, Typography } from "antd";
 
 import { SORT_TYPE } from "../../../../constants";
 
+export type IExtraActionBlogPage = {
+  searchValue: string;
+  sortValue: string;
+  onSearch: (values: string) => void;
+  handleChangeValue: (e: { target: { value: string } }) => void;
+  handleChangeSort: (values: string) => void;
+  handleAddBlog: () => void;
+};
+
 const options = [
   {
     value: SORT_TYPE.DESC,
@@ -21,7 +30,7 @@ const ExtraActionBlog = ({
   handleChangeValue,
   handleChangeSort,
   handleAddBlog,
-}: any) => {
+}: IExtraActionBlogPage) => {
   return (
     <>
       <div className="space-action">

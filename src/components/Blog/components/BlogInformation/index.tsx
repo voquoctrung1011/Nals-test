@@ -1,15 +1,27 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Avatar, List, Skeleton } from "antd";
+import { IBlogType } from "../../../../interfaces";
 
-const Blog = ({ handleEditBlog, showDeleteConfirm, isLoading, blogs }: any) => {
+export type IBlogInformationPage = {
+  blogs: IBlogType[];
+  isLoading: boolean;
+  showDeleteConfirm: (values: IBlogType) => void;
+  handleEditBlog: (data: IBlogType) => void;
+};
+
+const BlogÌnormation = ({
+  handleEditBlog,
+  showDeleteConfirm,
+  isLoading,
+  blogs,
+}: IBlogInformationPage) => {
   return (
     <List
       className="demo-loadmore-list"
       loading={isLoading}
       itemLayout="horizontal"
       dataSource={blogs}
-      renderItem={(item: any) => (
+      renderItem={(item: IBlogType) => (
         <List.Item
           actions={[
             <a key="list-loadmore-edit" onClick={() => handleEditBlog(item)}>
@@ -37,4 +49,4 @@ const Blog = ({ handleEditBlog, showDeleteConfirm, isLoading, blogs }: any) => {
   );
 };
 
-export default Blog;
+export default BlogÌnormation;

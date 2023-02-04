@@ -5,6 +5,7 @@ import _ from "lodash";
 
 import { getLocalStorage } from "../utils/storage";
 import routes from "../layouts/StandardConfigLayout/routerConfig";
+import { IRoute } from "../interfaces";
 
 const { Content } = Layout;
 const App = () => {
@@ -32,7 +33,7 @@ const App = () => {
   return (
     <Layout className="layout" style={{ minHeight: "100vh" }}>
       <Routes>
-        {currentRoutes?.map((c: any) => {
+        {currentRoutes?.map((c: IRoute) => {
           return (
             <Route
               key={c?.path}
