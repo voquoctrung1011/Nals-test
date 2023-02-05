@@ -1,7 +1,15 @@
-import BlogDetail from "../../components/Blog";
+import React, { Suspense, lazy } from "react";
 
-const BlogDetailPages = () => {
-  return <BlogDetail />;
+import AppLoading from "../../layouts/AppLoading";
+
+const Blog = lazy(() => import("../../components/Blog"));
+
+const BlogComponent = () => {
+  return (
+    <Suspense fallback={<AppLoading />}>
+      <Blog />
+    </Suspense>
+  );
 };
 
-export default BlogDetailPages;
+export default BlogComponent;

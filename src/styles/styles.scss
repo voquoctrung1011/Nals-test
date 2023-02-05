@@ -100,3 +100,17 @@ body {
 .ant-image-img {
   border-radius: 8px;
 }
+
+.loading-data-wrapper {
+  z-index: 1;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  position: fixed;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+}
