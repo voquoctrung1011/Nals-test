@@ -44,8 +44,6 @@ const BlogÌnormation = ({
                   className="antd-image"
                   preview={false}
                   src={item?.image}
-                  // width={100}
-                  // height={80}
                   alt={item?.title}
                 />
               }

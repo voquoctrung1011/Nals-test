@@ -33,6 +33,7 @@ const Blog = () => {
   const { blogs } = useSelector(({ blog }: any) => blog.blogReducer);
   const [isLoading, setIsLoading] = useState(true);
   const [amoutOfBlogs, setAmountOfBlogs] = useState(1);
+  const [page, setPage] = useState<number>(1);
 
   const params: IParam = search
     ? JSON.parse(
@@ -70,6 +71,7 @@ const Blog = () => {
     const data = await FETCH_ALL_BLOG({ ...values });
     if (data) {
       const query = "?" + new URLSearchParams(values).toString();
+      setPage(Number(values?.page));
       navigate({
         pathname: "/blog",
         search: query,
@@ -128,7 +130,7 @@ const Blog = () => {
   const onSearch = async (value: string) => {
     setIsLoading(true);
     setSearchValue(value);
-    await fetchBlogByPage({ ...dataSubmit, search: value });
+    await fetchBlogByPage({ ...dataSubmit, page: 1, search: value });
   };
 
   const handleChangeSort = async (value: string) => {
@@ -178,7 +180,8 @@ const Blog = () => {
 
           {amoutOfBlogs > 1 && (
             <Pagination
-              defaultCurrent={params?.page || 1}
+              defaultCurrent={page}
+              current={page}
               total={amoutOfBlogs}
               onChange={handleChangePage}
             />

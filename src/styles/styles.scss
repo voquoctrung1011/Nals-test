@@ -80,7 +80,8 @@ body {
   align-items: center;
 }
 
-.antd-image {
+.antd-image,
+.ant-list-item-meta-avatar {
   width: 100px;
   height: 80px;
   @media only screen and (max-width: 582px) {
