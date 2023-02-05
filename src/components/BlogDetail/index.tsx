@@ -94,7 +94,7 @@ const BlogDetail = () => {
   return (
     <Layout className="layout">
       <Head />
-      <Content style={{ padding: "0 50px" }}>
+      <Content className="antd-layout-conten">
         <Breadcrumb style={{ margin: "16px 0" }}></Breadcrumb>
         <div className="site-layout-content">
           {!initialLoading ? (

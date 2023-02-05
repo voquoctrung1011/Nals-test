@@ -41,10 +41,11 @@ const BlogÌnormation = ({
             <List.Item.Meta
               avatar={
                 <Image
+                  className="antd-image"
                   preview={false}
                   src={item?.image}
-                  width={100}
-                  height={80}
+                  // width={100}
+                  // height={80}
                   alt={item?.title}
                 />
               }
